@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.navbar{
+    color: #090909;
+    border-bottom: 0.5px solid gray;
+    width: 100%;
+    line-height: 80px;
+    height: 80px;
+    font-size: 18px;
+    padding: 0 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+.navbar a{
+    text-decoration: none;
+    color: #000000;
+}
+.navbar a.nav-logo{
+    float: left;
+    height: inherit;
+    line-height: inherit;
+    padding: 0 30px;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px cyan;
+}
+.navbar ul{
+    float: right;
+    list-style: none;
+    height: inherit;
+    line-height: inherit;
+    padding: 0 50px;
+}
+.navbar ul li{
+    display: inline-block;
+}
+.navbar ul li a{
+    display:block;
+    text-align: center;
+    min-width: 120px;
+    padding: 0 30px;
+}
+.navbar ul li a:hover{
+    background-color: gray;
+}
+body{
+    background-image: url("travel.jpg");
+    
+    background-size: 100%;
+    background-position: center;
+}
+.content{
+    font-family: 'Courier New', Courier, monospace;
+    color: #d8d8d8;
+    margin-top: 30%;
+    margin-left: 100px;
+}
+h1{
+    font-size: 70px;
+}
+p{
+    margin-top: 10px;
+}
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.button{
+    margin-top: 20px;
+    background: #d8d8d8;
+    cursor: pointer;
+    color: #191919;
+    padding: 12px 20px;
+    float: left;
+    border: 0;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.button:hover{
+    background: #b76060;
+}
