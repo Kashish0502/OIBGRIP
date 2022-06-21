@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-size: 100%; */
+    user-select: none;
+   
+     background-image: url("1.user3.jpg"); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+.temp{
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 5px 6px 15px #3d3d3d,
+    -2px -3px 8px #ffffff;
+    background-color: #89a0be;
+}
+
+
+.display {
+    padding-left: 250px;
+    padding-right: 250px;
+    padding-top: 150px;
+    
+}
+.display h1{
+    font-size: 35px;
+    color: #000;
+}
+
+form {
+    padding: 15px;
+}
+
+.calculator_input {
+    float: left;
+}
+label {
+    font-size: 20px;
+}
+input {
+    width: 100%;
+    font-size: 20px;
+    border-radius: 78px;
+    border: none;
+    outline: none;
+    background: rgb(255, 255, 255);
+    padding: 8px;
+    box-shadow: inset 5px 5px 5px #cbced1,
+    inset -5px -5px 5px #ffffff;
+
+}
+.result_area label {
+    width: 18%;
+    float: left;
+}
+.result_area input {
+    width: 82%;
+}
+.calculator_value label {
+    width: 36%;
+    float: left;
+}
+.calculator_value input {
+    width: 64%;
+}
+.calculator_value {
+    margin-bottom: 30px;
+}
+
+.calculator_input {
+    padding: 0px 23px;
+    margin-bottom: 30px;
+}
+
+.result_area {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+button#convert {
+    float: right;
+}
+button.cal-btn {
+    width: 45%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #0977aa;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+</style>
+<body>
+    <div class="temp">
+        <h4 class="title">Convert Temperature</h4>
+        <form action="" name="form">
+            <div class="temp_calculator_inputs">
+                <div class="calculator_value">
+                    <label for="">Value To Convert:</label>
+                    <input type="text" placeholder="0" name="value" id="input_value">
+                </div>
+                <div class="calculator_input">
+                    <label for="">From:</label>
+                    <select name="input" id="input">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (°K)</option>
+                    </select>
+                </div>
+                <div class="calculator_input">
+                    <label for="">To:</label>
+                    <select name="output" id="output">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (°K)</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" id="clear" class="cal-btn" onclick="reset()">Clear</button>
+            <button type="button" id="convert" class="cal-btn" onclick="convertTemperature()">Convert</button>
+            <div class="result_area">
+                <label for="">Answer:</label>
+                <input type="text" value="" id="result">
+            </div>
+        </form>
+    </div>
+</body>
+
+<script>function convertTemperature(){
+    let val = document.getElementById("input_value");
+    let result = document.getElementById("result");
+    let input = document.getElementById("input");
+    let output = document.getElementById("output");
+  
+    val.addEventListener("keyup", convertTemperature);
+    input.addEventListener("change", convertTemperature);
+    output.addEventListener("change", convertTemperature);
+  
+    let inputValue = input.value;
+    let outputValue = output.value;
+    if(inputValue === "celsius" && outputValue === "fahrenheit"){
+      result.value = Number((val.value) * 9/5) + 32;
+    }else if(inputValue === "celsius" && outputValue === "kelvin"){
+      result.value = Number(val.value) + 273.15;
+    }else if(inputValue === "celsius" && outputValue === "celsius"){
+      result.value = val.value;
+    }
+  
+  
+    //Fahrenheit
+    if(inputValue === "fahrenheit" && outputValue === "celsius"){
+      result.value = Number((val.value - 32) * 5) / 9;
+    }else if(inputValue === "fahrenheit" && outputValue === "kelvin"){
+      result.value = Number((val.value - 32) * 5/9) + 273.15;
+    }else if(inputValue === "fahrenheit" && outputValue === "fahrenheit"){
+      result.value = val.value;
+    }
+  
+  
+    //Kelvin
+    if(inputValue === "kelvin" && outputValue === "celsius"){
+      result.value = Number(val.value) - 273.15;
+    }else if(inputValue === "kelvin" && outputValue === "fahrenheit"){
+      result.value = Number((val.value - 273.15) * 9/5) + 32;
+    }else if(inputValue === "kelvin" && outputValue === "kelvin"){
+      result.value = val.value;
+    }
+  
+  
+  }
+  
+  function reset(){
+    convertTemperature();
+  }
+  function convertTemperature() {
+  let val = document.getElementById("input_value");
+  let result = document.getElementById("result");
+  let input = document.getElementById("input");
+  let output = document.getElementById("output");
+
+  val.addEventListener("keyup", convertTemperature);
+  input.addEventListener("change", convertTemperature);
+  output.addEventListener("change", convertTemperature);
+
+  let inputValue = input.value;
+  let outputValue = output.value;
+  if (inputValue === "celsius" && outputValue === "fahrenheit") {
+    result.value = Number((val.value) * 9 / 5) + 32;
+  } else if (inputValue === "celsius" && outputValue === "kelvin") {
+    result.value = Number(val.value) + 273.15;
+  } else if (inputValue === "celsius" && outputValue === "celsius") {
+    result.value = val.value;
+  }
+
+
+  //Fahrenheit
+  if (inputValue === "fahrenheit" && outputValue === "celsius") {
+    result.value = Number((val.value - 32) * 5) / 9;
+  } else if (inputValue === "fahrenheit" && outputValue === "kelvin") {
+    result.value = Number((val.value - 32) * 5 / 9) + 273.15;
+  } else if (inputValue === "fahrenheit" && outputValue === "fahrenheit") {
+    result.value = val.value;
+  }
+
+
+  //Kelvin
+  if (inputValue === "kelvin" && outputValue === "celsius") {
+    result.value = Number(val.value) - 273.15;
+  } else if (inputValue === "kelvin" && outputValue === "fahrenheit") {
+    result.value = Number((val.value - 273.15) * 9 / 5) + 32;
+  } else if (inputValue === "kelvin" && outputValue === "kelvin") {
+    result.value = val.value;
+  }
+
+
+}
+function reset() {
+  convertTemperature();
+}
+</script>
+  </body>
+  
+  
+
+</html>
